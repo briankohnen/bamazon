@@ -65,8 +65,11 @@ const updateStore = (item, stock, amt, price) => {
     connection.query("UPDATE products SET ? WHERE ?", 
     [{stock_quantity: (stock - amt)}, {id: item}], (err, res) => {
         if (err) throw err;
-        console.log("Success! Your total came out to be " + (amt * price) + " dollars. Shop with us again!");
-        //showItems();
-    })
+        connection.query("UPDATE products SET ? WHERE?",
+        [{product_sales: (amt * price)}, {id: item}], (err, res) => {
+            if (err) throw err;
+            console.log("Success! Your total came out to be " + (amt * price) + " dollars. Shop with us again!");
+        })
     connection.end();
+    })
 }
