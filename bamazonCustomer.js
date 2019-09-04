@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   database: "bamazon_db"
 });
 
-connection.connect(function(err) {
+connection.connect((err) => {
   if (err) throw err;
   showItems();
 });
