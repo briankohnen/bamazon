@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
-const table = require("table");
+
 const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -32,17 +32,43 @@ const listOptions = () => {
                 break;
             default:
                 //listOptions();
-                //connection.end();
+                connection.end();
                 break;
         }
     })
 };
 
 const viewSales = () => {
-        connection.query("SELECT departments.id, departments.department_name, departments.over_head_costs, SUM(products.product_sales) FROM departments, products WHERE departments.department_name = products.department_name GROUP BY products.department_name",
+        connection.query("SELECT departments.id, departments.department_name, departments.over_head_costs, SUM(products.product_sales) AS product_sales, (SUM(products.product_sales) - departments.over_head_costs) AS total_profit FROM departments, products WHERE departments.department_name = products.department_name GROUP BY products.department_name",
         (err, res) => {
             if (err) throw err;
             console.log(res);
             listOptions();
         });
+};
+
+const createDep = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "depname",
+            message: "Name of department to add"
+        },
+        {
+            type: "input",
+            name: "costs",
+            message: "Enter overhead costs"
+        }
+    ]).then(answers => {
+
+        connection.query("INSERT INTO departments SET ?",
+        {
+            department_name: answers.depname,
+            over_head_costs: answers.costs
+        }, (err, res) => {
+            if (err) throw err;
+            console.log("Department added!");
+            listOptions();
+        })
+    })
 };
