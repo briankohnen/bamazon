@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
+const Table = require('cli-table');
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -41,8 +42,22 @@ const listOptions = () => {
 const viewSales = () => {
         connection.query("SELECT departments.id, departments.department_name, departments.over_head_costs, SUM(products.product_sales) AS product_sales, (SUM(products.product_sales) - departments.over_head_costs) AS total_profit FROM departments, products WHERE departments.department_name = products.department_name GROUP BY products.department_name",
         (err, res) => {
+            
             if (err) throw err;
             console.log(res);
+
+            let table = new Table({
+                head: ['department_id', 'department_name', 'over_head_costs', 'product_sales', 'total_profit'],
+                colWidths: [20, 20, 20, 20, 20]
+            });
+            
+            for (var i = 0; i < res.length; i++) {
+                table.push(
+                    [res[i].id, res[i].department_name, res[i].over_head_costs, res[i].product_sales, res[i].total_profit]
+                );
+            }
+            
+            console.log(table.toString());
             listOptions();
         });
 };
