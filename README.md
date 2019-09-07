@@ -1,4 +1,5 @@
 # bamazon
+### A CLI App used to read/update information in a store's database
 
 Bamazon features three distinct but connected functionalities to access a web store's stock data.
 * __Customer View__
