@@ -1,5 +1,4 @@
 # bamazon
-CLI app to create/update orders within a store's database
 
 Bamazon features three distinct but connected functionalities to access a web store's stock data.
 * __Customer View__
