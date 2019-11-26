@@ -2,12 +2,9 @@
 ### A CLI App used to read/update information in a store's database
 
 Bamazon features three distinct but connected functionalities to access a web store's stock data.
-* __Customer View__
- * Customers can view all items in the store and purchase *x* amount, as long as the store has enough in stock.
-* __Manager View__
- * Managers also can view all items in the store and additionally can view items with low stock, add items to inventory, and add new products
-* __Supervisor View__
- * Supervisors have the ability to view cost/profits regarding each department the store items fall into.
+* __Customer View__: Customers can view all items in the store and purchase *x* amount, as long as the store has enough in stock.
+* __Manager View__: Managers also can view all items in the store and additionally can view items with low stock, add items to inventory, and add new products
+* __Supervisor View__: Supervisors have the ability to view cost/profits regarding each department the store items fall into.
 
 
 ## How To Use It
