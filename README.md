@@ -16,11 +16,11 @@ Bamazon is a command line application, it is run through the command line.
 2. Locate the delcaration of the mysql.connection at the top of each .js file, and input your password in the appropriate line.
 3. Run an '*npm install*' to get the appropriate packages to run the three separate views.
 3. In the command line, try running the three .js files
-  1. bamazonCustomer.js
+  1. node bamazonCustomer.js
   ![Customer View](https://i.imgur.com/LTt3tGf.png)
-  2. bamazonManager.js
+  2. node bamazonManager.js
   ![Manager View](https://i.imgur.com/mrafMeR.png)
-  3. bamazonSupervisor.js
+  3. node bamazonSupervisor.js
   ![Supervisor View](https://i.imgur.com/N6Jsb6S.png)
 4. To exit any of the views, press CTRL+C (CMD+C on Mac)
   
